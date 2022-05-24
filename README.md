@@ -1,1 +1,1 @@
-# c-CPU-emulator
+# CPU-emulator
