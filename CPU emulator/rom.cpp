@@ -1,4 +1,4 @@
-#include "memory.cpp";
+#include "memory.h"
 using namespace std;
 
 class rom : public memory

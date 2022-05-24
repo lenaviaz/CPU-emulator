@@ -1,4 +1,6 @@
-#include "memory.cpp";
+
+#include "memory.h"
+#include <string>
 using namespace std;
 
 class ram : public memory
