@@ -12,20 +12,45 @@ public:
     void attach(int address, memory &m1)
     {
         myMap.insert(std::pair<int, memory *>(address, &m1));
-
-        // myMap[address] = &m1;
     }
 
     void initialize(int address, string word)
     {
+        for (std::pair<const int, memory *> x : myMap)
+        {
+            int key = x.first;
+            memory *m = x.second;
+            int size = x.second->getSize();
 
-        // int key
-        // memory m
+            int check = key + size;
+
+            if (key <= address && check > address)
+            {
+                int adjust = address - key;
+                x.second->initialize(address, word);
+            }
+        }
     }
 
     int read(int address)
     {
-        return 5; // placeholder
+        // return 5; // placeholder
+
+        for (std::pair<const int, memory *> x : myMap)
+        {
+            int key = x.first;
+            memory *m = x.second;
+            int size = x.second->getSize();
+
+            int check = key + size;
+
+            if (key <= address && check > address)
+            {
+                int adjust = address - key;
+                return x.second->read(adjust);
+            }
+        }
+        return 120;
     }
 
     int getSize()
@@ -40,11 +65,10 @@ public:
     void printVals()
     {
         for (std::pair<const int, memory *> x : myMap)
-        // for (memory x : myMap)
         {
             int a = x.second->getSize();
             printf("Attached at address:%i\n", x.first);
-            printf("Size: %i\n", a);
+            printf("Size: %i\n                                                                                                                                                                                                       ", a);
             // printf("%i\n", a);
         }
     }

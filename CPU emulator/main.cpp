@@ -19,7 +19,19 @@ int main()
 
     // int a = r1.getSize();
     // printf("size is:  %i\n", a);
-    m1.printVals();
+    // m1.printVals();
+
+    m1.initialize(12, "hhhhh");
+    int a = m1.read(14);
+    // printf("%i", a);
+
+    // string a = "hello";
+    // char b = a[3];
+    // int ascii = (int)b;
+
+    // printf("%i", ascii);
+    //  r1.initialize(12, "hello");
+    //  r1.read(12);
 
     return 0;
 }

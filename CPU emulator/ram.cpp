@@ -25,8 +25,10 @@ public:
         {
             char a = word[i];
             int ascii = (int)a;
+            // printf("%i\n", ascii);
 
             capacity[address] = ascii;
+            // printf("%i\n", capacity[address]);
             address++;
         }
     }
@@ -39,6 +41,7 @@ public:
     int read(int address)
     {
         int toRead = capacity[address];
+        printf("Reading: %i\n", toRead);
         return toRead;
     }
 
