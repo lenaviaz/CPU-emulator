@@ -1,5 +1,6 @@
 
 #include "memory.h"
+#include <vector>
 #include <string>
 using namespace std;
 
@@ -8,16 +9,23 @@ class ram : public memory
 
 private:
     int size;
-    int capacity[];
+    vector<int> capacity;
 
 public:
     ram(int a)
     {
         size = a;
-        capacity[size];
+        capacity.reserve(size);
     }
 
 public:
+    void write(int address, int a)
+    {
+        capacity[address] = a;
+        // printf("stuff is being written\n");
+        // printf("%i\n", capacity[address]);
+    }
+
     void initialize(int address, string word)
     {
         printf("RAM initialize ");
@@ -28,7 +36,6 @@ public:
             // printf("%i\n", ascii);
 
             capacity[address] = ascii;
-            // printf("%i\n", capacity[address]);
             address++;
         }
     }
@@ -43,10 +50,30 @@ public:
         int toRead = capacity[address];
         printf("Reading: %i\n", toRead);
         return toRead;
+
+        // for (int i = 0; i < size; i++)
+        // {
+        //     // printf("index %i holds value %i\n", i, capacity[i]);
+        // }
+        return 400;
     }
 
-    void write(int address, int a)
+    void printVals()
     {
-        capacity[address] = a;
+        for (int i : capacity)
+        {
+            printf("%i", capacity[i]);
+        }
     }
+
+    /*     int arrSize = getSize();
+    void total(int (&capacity)[arrSize])
+    {
+        int total = 0;
+        for (int val : capacity)
+        {
+            total += val;
+        }
+        std::cout << "The total amount of jars sold is " << total << ".\n";
+    } */
 };

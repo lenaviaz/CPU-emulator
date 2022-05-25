@@ -27,7 +27,8 @@ public:
             if (key <= address && check > address)
             {
                 int adjust = address - key;
-                x.second->initialize(address, word);
+                x.second->initialize(adjust, word);
+                break;
             }
         }
     }
@@ -60,6 +61,21 @@ public:
 
     void write(int address, int a)
     {
+
+        for (std::pair<const int, memory *> x : myMap)
+        {
+            int key = x.first;
+            memory *m = x.second;
+            int size = x.second->getSize();
+
+            int check = key + size;
+
+            if (key <= address && check > address)
+            {
+                int adjust = address - key;
+                x.second->write(adjust, a);
+            }
+        }
     }
 
     void printVals()
