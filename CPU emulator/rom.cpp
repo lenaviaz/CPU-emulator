@@ -1,5 +1,6 @@
 #include "memory.h"
-using namespace std;
+#include <iostream>
+// using namespace std;
 
 class rom : public memory
 {
@@ -18,7 +19,7 @@ public:
 public:
     void initialize(int address, string word)
     {
-        printf("ROM initialize ");
+        std::cout << "ROM initialize " << std::endl;
         for (int i = 0; i < word.length(); i++)
         {
             char a = word[i];

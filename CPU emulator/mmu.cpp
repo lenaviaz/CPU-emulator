@@ -1,7 +1,7 @@
 #include "memory.h"
 #include <map>
 #include <iostream>
-using namespace std;
+// using namespace std;
 
 class mmu : public memory
 {
@@ -86,8 +86,14 @@ public:
         for (std::pair<const int, memory *> x : myMap)
         {
             int a = x.second->getSize();
-            printf("Attached at address:%i\n", x.first);
-            printf("Size: %i\n                                                                                                                                                                                                       ", a);
+            std::cout << "attached at address\n";
+            std::cout << x.first;
+            std::cout
+                << "\n"
+                << endl;
+            // std::endl;
+            /// std::cout << ("Attached at address:%i\n", x.first) << std::endl;
+            // printf("Size: %i\n                                                                                                                                                                                                       ", a);
             // printf("%i\n", a);
         }
     }

@@ -1,8 +1,9 @@
 
 #include "memory.h"
+#include <iostream>
 #include <vector>
 #include <string>
-using namespace std;
+// using namespace std;
 
 class ram : public memory
 {
@@ -26,7 +27,9 @@ public:
 
     void initialize(int address, string word)
     {
-        printf("RAM initialize \n");
+        std::cout << "RAM initialize \n"
+                  << std::endl;
+
         for (int i = 0; i < word.length(); i++)
         {
             char a = word[i];
@@ -46,7 +49,7 @@ public:
     int read(int address)
     {
         int toRead = capacity[address];
-        printf("Reading: %i\n", toRead);
+        std::cout << ("Reading: %i\n", toRead) << std::endl;
         return toRead;
 
         // for (int i = 0; i < size; i++)
