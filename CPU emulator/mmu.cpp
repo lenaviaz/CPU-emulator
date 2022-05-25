@@ -12,6 +12,10 @@ public:
     void attach(int address, memory &m1)
     {
         myMap.insert(std::pair<int, memory *>(address, &m1));
+
+        if (true)
+        {
+        }
     }
 
     void initialize(int address, string word)
@@ -35,7 +39,6 @@ public:
 
     int read(int address)
     {
-        // return 5; // placeholder
 
         for (std::pair<const int, memory *> x : myMap)
         {
@@ -51,7 +54,7 @@ public:
                 return x.second->read(adjust);
             }
         }
-        return 120;
+        return 404;
     }
 
     int getSize()

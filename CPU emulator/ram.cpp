@@ -22,13 +22,11 @@ public:
     void write(int address, int a)
     {
         capacity[address] = a;
-        // printf("stuff is being written\n");
-        // printf("%i\n", capacity[address]);
     }
 
     void initialize(int address, string word)
     {
-        printf("RAM initialize ");
+        printf("RAM initialize \n");
         for (int i = 0; i < word.length(); i++)
         {
             char a = word[i];
@@ -65,15 +63,4 @@ public:
             printf("%i", capacity[i]);
         }
     }
-
-    /*     int arrSize = getSize();
-    void total(int (&capacity)[arrSize])
-    {
-        int total = 0;
-        for (int val : capacity)
-        {
-            total += val;
-        }
-        std::cout << "The total amount of jars sold is " << total << ".\n";
-    } */
 };
