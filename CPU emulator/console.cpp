@@ -2,14 +2,18 @@
 
 class console
 {
-
+public:
     int read()
     {
 
-        int input;
-        std::cout << "enter a character";
+        char input;
+        std::cout << "enter a character\n";
         std::cin >> input;
-        cout << "" << std::endl;
+        std::cout << "" << std::endl;
+
+        int a = (int)input;
+        std::cout << a << std::endl;
+        return input;
     }
 
     void write(int b)

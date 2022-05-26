@@ -9,13 +9,61 @@ public:
     map<int, memory *> myMap;
 
 public:
+    bool checkMap(int address, memory &m1)
+    {
+
+        if (myMap.empty())
+        {
+            return true;
+        }
+
+        for (std::pair<const int, memory *> x : myMap)
+        {
+
+            int key = x.first;
+            int size = x.second->getSize();
+            if (key <= address <= size - 1)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     void attach(int address, memory &m1)
     {
+        bool check = true;
+        for (std::pair<const int, memory *> x : myMap)
+        {
+
+            int key = x.first;
+            int size = x.second->getSize();
+            if (address < key || address > size)
+            {
+                check = true;
+
+                // std::cout << "mem overlap" << std::endl;
+                // return;
+            }
+            else
+            {
+                check = false;
+                std::cout << "mem overlap" << std::endl;
+                return;
+            }
+        }
+
         myMap.insert(std::pair<int, memory *>(address, &m1));
 
-        if (true)
-        {
-        }
+        // if (checkMap(address, m1))
+        // {
+        //     myMap.insert(std::pair<int, memory *>(address, &m1));
+        // }
+        // else
+        // {
+        //     std::cout << "cannot attach - memory overlap" << std::endl;
+        // }
     }
 
     void initialize(int address, string word)
@@ -89,7 +137,7 @@ public:
             std::cout << "attached at address\n";
             std::cout << x.first;
             std::cout
-                << "\n"
+                << a
                 << endl;
             // std::endl;
             /// std::cout << ("Attached at address:%i\n", x.first) << std::endl;
