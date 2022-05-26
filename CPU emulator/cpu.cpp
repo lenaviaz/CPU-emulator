@@ -10,10 +10,15 @@ class cpu
 {
 
 private:
-    int *reg[8];
+    int reg[8];
+    int *regPoint;
     mmu m1;
 
 public:
+    cpu()
+    {
+        regPoint = reg;
+    }
     void
     attachMem(mmu &m)
     {
@@ -33,28 +38,44 @@ public:
         case 1:
         {
             ldata d1(i1->getName(), i1->getSecond(), i1->getThirdString());
-            std::cout << d1.getName() << d1.getSecond() << d1.getThirdString() << std::endl;
+            // std::cout << d1.getName() << d1.getSecond() << d1.getThirdString() << std::endl;
             m1.initialize(d1.getSecond(), d1.getThirdString());
             break;
         }
         case 2:
         {
             loadImm d1(i1->getName(), i1->getSecond(), i1->getThird());
+            int add = d1.getThird();
+            int *b = &reg[d1.getSecond()];
+            *b = add;
+            std::cout << reg[d1.getSecond()] << std::endl;
+            b = NULL;
+            break;
         }
 
         case 3:
         {
             load d1(i1->getName(), i1->getSecond(), i1->getThird());
+            int add = m1.read(d1.getThird());
+            int *b = &reg[d1.getSecond()];
+            *b = add;
+            std::cout << reg[d1.getSecond()] << std::endl;
+            b = NULL;
+            break;
         }
 
         case 4:
         {
             store d1(i1->getName(), i1->getSecond(), i1->getThird());
+
+            break;
         }
 
         case 5:
         {
             InB d1(i1->getName(), i1->getSecond(), i1->getThird());
+
+            break;
         }
         }
     }

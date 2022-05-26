@@ -49,14 +49,14 @@ public:
     int read(int address)
     {
         int toRead = capacity[address];
-        std::cout << ("Reading: %i\n", toRead) << std::endl;
+        std::cout << "reading" << std::endl;
         return toRead;
 
         // for (int i = 0; i < size; i++)
         // {
         //     // printf("index %i holds value %i\n", i, capacity[i]);
         // }
-        return 400;
+        return 99999;
     }
 
     void printVals()

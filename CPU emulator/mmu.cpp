@@ -103,7 +103,7 @@ public:
                 return x.second->read(adjust);
             }
         }
-        return 404;
+        return 9999;
     }
 
     int getSize()

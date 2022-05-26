@@ -20,12 +20,13 @@ int main()
     comp.attachMem(m1);
 
     ldata f1("ldata", 5, "h!llo");
+    loadImm f2("loadImm", 1, 1999);
+    load f3("load", 2, 6);
     // offset f2("offset", 5);
 
     comp.evalInst(&f1);
-    std::cout << m1.read(5) << m1.read(6) << std::endl;
-    //   m1.write(6, 125);
-    //   m1.read(6);
+    comp.evalInst(&f2);
+    comp.evalInst(&f3);
 
     return 0;
 }
