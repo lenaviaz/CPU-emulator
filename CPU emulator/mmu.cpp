@@ -2,7 +2,8 @@
 #include <map>
 #include <iostream>
 // using namespace std;
-
+#ifndef MMU_CPP
+#define MMU_CPP
 class mmu : public memory
 {
 public:
@@ -146,3 +147,4 @@ public:
         }
     }
 };
+#endif
