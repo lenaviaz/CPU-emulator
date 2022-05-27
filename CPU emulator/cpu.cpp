@@ -25,6 +25,17 @@ public:
         m1 = m;
     }
 
+    void printIOmap()
+    {
+        for (std::pair<const int, console *> x : IOman)
+        {
+            int key = x.first;
+            console *c = x.second;
+            std::cout << key << "\n"
+                      << std::endl;
+        }
+    }
+
     void attachIO(int val, console &c1)
     {
         IOman.insert(std::pair<int, console *>(val, &c1));
@@ -32,6 +43,22 @@ public:
         std::cout << "attached" << std::endl;
     }
 
+    bool regControl(int check)
+    {
+        for (std::pair<const int, console *> x : IOman)
+        {
+            int key = x.first;
+            if (key == check)
+                std::cout << "this register is NOT available"
+                          << "\n"
+                          << std::endl;
+            return false;
+        }
+        std::cout << "this register is available"
+                  << "\n"
+                  << std::endl;
+        return true;
+    }
     void evalInst(inst *i1)
     {
         // std::cout << d1.getName() << d1.getSecond() << d1.getThirdString() << std::endl;
