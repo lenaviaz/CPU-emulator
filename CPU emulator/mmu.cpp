@@ -8,7 +8,8 @@ class mmu : public memory
 {
 public:
     map<int, memory *> myMap;
-
+    // size of
+    // throw errors if allocate outside
 public:
     bool checkMap(int address, memory &m1)
     {
@@ -40,6 +41,13 @@ public:
 
             int key = x.first;
             int size = x.second->getSize();
+
+            if (address < 0 || address + size > 1000)
+            {
+                check = false;
+                std::cout << "System only has 1 kb of ram available";
+            }
+
             if (address < key || address > size)
             {
                 check = true;
