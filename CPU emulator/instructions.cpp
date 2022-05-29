@@ -192,18 +192,19 @@ public:
     }
 };
 
-//////////////////////////////////////////////////
-class offset : public inst
+class OutB : public inst
 {
 private:
     std::string name;
-    int numOffset;
+    int reg;
+    int port;
 
 public:
-    offset(std::string a, int b)
+    OutB(std::string a, int b, int c)
     {
         name = a;
-        numOffset = b;
+        reg = b;
+        port = c;
     }
 
     std::string getName()
@@ -213,12 +214,298 @@ public:
 
     int getSecond()
     {
-        return numOffset;
+        return reg;
+    }
+
+    int getThird()
+    {
+        return port;
     }
 
     int getNum()
     {
-        return 3;
+        return 6;
+    }
+};
+
+class OutNum : public inst
+{
+
+public:
+    int getNum()
+    {
+        return 7;
+    }
+};
+
+class OutStr : public inst
+{
+private:
+    std::string name;
+    int addr;
+    int port;
+
+public:
+    OutStr(std::string a, int b, int c)
+    {
+        name = a;
+        addr = b;
+        port = c;
+    }
+
+    std::string getName()
+    {
+        return name;
+    }
+
+    int getSecond()
+    {
+        return addr;
+    }
+
+    int getThird()
+    {
+        return port;
+    }
+    int getNum()
+    {
+        return 8;
+    }
+};
+
+class Add : public inst
+{
+private:
+    std::string name;
+    int regA;
+    int regB;
+    int regC;
+
+public:
+    Add(std::string n, int a, int b, int c)
+    {
+        name = n;
+        regA = a;
+        regB = b;
+        regC = c;
+    }
+
+    std::string getname()
+    {
+        return name;
+    }
+
+    int getSecond()
+    {
+        return regA;
+    }
+
+    int getThird()
+    {
+        return regB;
+    }
+
+    int getFourth()
+    {
+        return regC;
+    }
+
+    int getNum()
+    {
+        return 9;
+    }
+};
+
+class Sub : public inst
+{
+private:
+    std::string name;
+    int regA;
+    int regB;
+    int regC;
+
+public:
+    Sub(std::string n, int a, int b, int c)
+    {
+        name = n;
+        regA = a;
+        regB = b;
+        regC = c;
+    }
+
+    std::string getname()
+    {
+        return name;
+    }
+
+    int getSecond()
+    {
+        return regA;
+    }
+
+    int getThird()
+    {
+        return regB;
+    }
+
+    int getFourth()
+    {
+        return regC;
+    }
+
+    int getNum()
+    {
+        return 10;
+    }
+};
+
+class J : public inst
+{
+private:
+    std::string name;
+    int offset;
+
+public:
+    J(std::string a, int b)
+    {
+        name = a;
+        offset = b;
+    }
+
+    std::string getName()
+    {
+        return name;
+    }
+
+    int getSecond()
+    {
+        return offset;
+    }
+
+    int getNum()
+    {
+        return 11;
+    }
+};
+
+class JZ : public inst
+{
+private:
+    std::string name;
+    int reg;
+    int offset;
+
+public:
+    JZ(std::string a, int b, int c)
+    {
+        name = a;
+        reg = b;
+        offset = c;
+    }
+
+    std::string getName()
+    {
+        return name;
+    }
+
+    int getSecond()
+    {
+        return reg;
+    }
+
+    int getThird()
+    {
+        return offset;
+    }
+    int getNum()
+    {
+        return 12;
+    }
+};
+
+class JNZ : public inst
+{
+private:
+    std::string name;
+    int reg;
+    int offset;
+
+public:
+    JNZ(std::string a, int b, int c)
+    {
+        name = a;
+        reg = b;
+        offset = c;
+    }
+
+    std::string getName()
+    {
+        return name;
+    }
+
+    int getSecond()
+    {
+        return reg;
+    }
+
+    int getThird()
+    {
+        return offset;
+    }
+    int getNum()
+    {
+        return 13;
+    }
+};
+
+class JReg : public inst
+{
+private:
+    std::string name;
+    int reg;
+
+public:
+    JReg(std::string a, int b)
+    {
+        name = a;
+        reg = b;
+    }
+
+    std::string getName()
+    {
+        return name;
+    }
+
+    int getSecond()
+    {
+        return reg;
+    }
+
+    int getNum()
+    {
+        return 14;
+    }
+};
+
+class Halt : inst
+{
+private:
+    std::string name;
+
+public:
+    Halt(std::string a)
+    {
+        name = a;
+    }
+
+    std::string getName()
+    {
+        return name;
+    }
+
+    int getNum()
+    {
+        return 15;
     }
 };
 

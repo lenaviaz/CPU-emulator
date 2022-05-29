@@ -20,19 +20,28 @@ int main()
 
     comp.attachMem(m1);
     comp.attachIO(5, c1);
-    comp.regControl(4);
-    comp.printIOmap();
+    // comp.regControl(4);
 
-    ldata f1("ldata", 5, "h&llo");
-    loadImm f2("loadImm", 1, 1999);
-    load f3("load", 2, 6);
-    store f4("store", 3, 6);
+    // comp.printIOmap();
+
+    ldata f1("ldata", 5, "I'm Lena!0");
+    loadImm f2("loadImm", 1, 35);
+    // load f3("load", 2, 6);
+    // store f4("store", 3, 6);
     // offset f2("offset", 5);
+    OutB f3("OutB", 1, 5);
+    OutStr f4("OutStr", 5, 5);
+    Add f5("Sub", 5, 1, 6);
 
-    // comp.evalInst(&f1);
-    // comp.evalInst(&f2);
+    comp.evalInst(&f1);
+    comp.evalInst(&f2);
+    comp.evalInst(&f5);
+
+    // c1.write(33);
     // comp.evalInst(&f3);
+    //  comp.evalInst(&f3);
     // comp.evalInst(&f4);
 
+    comp.printRegs();
     return 0;
 }

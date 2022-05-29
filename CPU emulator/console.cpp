@@ -19,10 +19,11 @@ public:
 
     void write(int b)
     {
-        if (0 <= b <= 255)
+        if (0 <= b && b <= 255)
         {
             char ch = b;
-            std::cout << ch << std::endl;
+            std::cout << "write called\n"
+                      << ch << std::endl;
         }
     }
 };

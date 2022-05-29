@@ -24,6 +24,11 @@ public:
         return 0;
     }
 
+    virtual int getFourth()
+    {
+        return 0;
+    }
+
     virtual int getNum()
     {
         return 0;
