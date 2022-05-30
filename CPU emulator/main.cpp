@@ -37,7 +37,7 @@ int main()
     comp.addInst(f2);
     comp.addInst(f3);
 
-    comp.run(comp.getList());
+    comp.run();
 
     // comp.evalInst(&f1);
     // comp.evalInst(&f2);

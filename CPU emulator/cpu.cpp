@@ -17,7 +17,7 @@ private:
     map<int, console *> IOman;
     int instPointer;
     bool runinstructions;
-    std::vector<inst> cpuInst;
+    std::vector<inst *> cpuInst;
 
 public:
     cpu()
@@ -38,7 +38,7 @@ public:
 
     void addInst(inst &i1)
     {
-        cpuInst.push_back(i1);
+        cpuInst.push_back(&i1);
         std::cout << "\n\n"
                   << i1.getName();
     }
@@ -54,7 +54,7 @@ public:
         }
     }
 
-    std::vector<inst> getList()
+    std::vector<inst *> getList()
     {
         return cpuInst;
     }
@@ -281,11 +281,11 @@ public:
         }
     };
 
-    void run(std::vector<inst> instList)
+    void run()
     {
-        while (runinstructions = true)
+        for (int i = 0; i < 3; i++)
         {
-            evalInst(&instList[instPointer]);
+            evalInst(cpuInst.at(i));
         }
     }
 };
