@@ -33,9 +33,15 @@ int main()
     OutStr f4("OutStr", 5, 5);
     Add f5("Sub", 5, 1, 6);
 
-    comp.evalInst(&f1);
-    comp.evalInst(&f2);
-    comp.evalInst(&f5);
+    comp.addInst(f1);
+    comp.addInst(f2);
+    comp.addInst(f3);
+
+    comp.run(comp.getList());
+
+    // comp.evalInst(&f1);
+    // comp.evalInst(&f2);
+    // comp.evalInst(&f5);
 
     // c1.write(33);
     // comp.evalInst(&f3);

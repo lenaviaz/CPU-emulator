@@ -25,14 +25,22 @@ public:
         regPoint = reg;
         instPointer = 0;
         runinstructions = true;
+
+        for (int i = 0; i < 8; i++)
+        {
+            reg[i] = 0;
+        }
     }
     void attachMem(mmu &m)
     {
         m1 = m;
     }
 
-    void addInst(inst *i1)
+    void addInst(inst &i1)
     {
+        cpuInst.push_back(i1);
+        std::cout << "\n\n"
+                  << i1.getName();
     }
 
     void printIOmap()
@@ -44,6 +52,11 @@ public:
             std::cout << key << "\n"
                       << std::endl;
         }
+    }
+
+    std::vector<inst> getList()
+    {
+        return cpuInst;
     }
 
     void attachIO(int val, console &c1)
@@ -73,7 +86,7 @@ public:
 
     void printRegs()
     {
-        std::cout << "cpu registers\n";
+        std::cout << "\ncpu registers\n";
         for (int i = 0; i < 8; i++)
         {
             std::cout << " | " << reg[i];
