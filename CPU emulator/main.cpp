@@ -9,44 +9,56 @@
 
 int main()
 {
-    ram r1(15); // allocating one chunk of ram of size 15
+    ram r1(50); // allocating one chunk of ram of size 15
     ram r2(20); // allocating one chunk of ram size 20
     console c1;
     console c2;
     mmu m1;
     m1.attach(0, r1);
-    m1.attach(16, r2); // won't attach at 15 deal with later
+    m1.attach(100, r2);
+    // m1.attach(16, r2); // won't attach at 15 deal with later
     cpu comp;
 
     comp.attachMem(m1);
-    comp.attachIO(5, c1);
+    comp.attachIO(0, c1);
     // comp.regControl(4);
 
     // comp.printIOmap();
 
-    ldata f1("ldata", 5, "I'm Lena!0");
-    loadImm f2("loadImm", 1, 35);
-    // load f3("load", 2, 6);
-    // store f4("store", 3, 6);
-    // offset f2("offset", 5);
-    OutB f3("OutB", 1, 5);
-    OutStr f4("OutStr", 5, 5);
-    Add f5("Sub", 5, 1, 6);
+    ldata f1("ldata", 5, "Please enter a number between 0 and 9");
+    OutStr f2("OutStr", 5, 5);
+    InB f3("InB", 4, 0);
+    loadImm sp("LoadImm", 7, 1);
+    loadImm f4("LoadImm", 1, 0);
+    loadImm f5("LoadImm", 2, 1);
+
+    Add f6("Add", 1, 2, 3);
+    store f7("store", 2, 100);
+    load f8("load", 1, 100);
+
+    store f9("store", 3, 101);
+    load f10("load", 2, 101);
+    Sub f11("Sub", 4, 7, 4);
+    JNZ f12("JNZ", 4, -6);
+
+    // Halt f12("Halt");
+    // all initializing stuff
 
     comp.addInst(f1);
     comp.addInst(f2);
     comp.addInst(f3);
+    comp.addInst(sp);
+    comp.addInst(f4);
+    comp.addInst(f5);
+    comp.addInst(f6);
+    comp.addInst(f7);
+    comp.addInst(f8);
+    comp.addInst(f9);
+    comp.addInst(f10);
+    comp.addInst(f11);
+    comp.addInst(f12);
 
     comp.run();
-
-    // comp.evalInst(&f1);
-    // comp.evalInst(&f2);
-    // comp.evalInst(&f5);
-
-    // c1.write(33);
-    // comp.evalInst(&f3);
-    //  comp.evalInst(&f3);
-    // comp.evalInst(&f4);
 
     comp.printRegs();
     return 0;

@@ -49,7 +49,6 @@ public:
     int read(int address)
     {
         int toRead = capacity[address];
-        std::cout << "reading" << std::endl;
         return toRead;
 
         // for (int i = 0; i < size; i++)

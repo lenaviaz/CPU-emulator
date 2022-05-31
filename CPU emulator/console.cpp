@@ -8,13 +8,13 @@ public:
     {
 
         char input;
-        std::cout << "enter a character\n";
+        std::cout << "\n";
         std::cin >> input;
         std::cout << "" << std::endl;
 
-        int a = (int)input;
+        int a = (int)input - 48;
         std::cout << a << std::endl;
-        return input;
+        return a;
     }
 
     void write(int b)
@@ -22,8 +22,8 @@ public:
         if (0 <= b && b <= 255)
         {
             char ch = b;
-            std::cout << "write called\n"
-                      << ch << std::endl;
+            std::cout
+                << ch;
         }
     }
 };

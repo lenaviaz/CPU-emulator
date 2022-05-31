@@ -39,8 +39,8 @@ public:
     void addInst(inst &i1)
     {
         cpuInst.push_back(&i1);
-        std::cout << "\n\n"
-                  << i1.getName();
+        // std::cout << "\n\n"
+        //           << i1.getName();
     }
 
     void printIOmap()
@@ -62,9 +62,7 @@ public:
     void attachIO(int val, console &c1)
     {
         IOman.insert(std::pair<int, console *>(val, &c1));
-        reg[val] = c1.read(); // can remove later
-        std::cout << "attached at port\n"
-                  << val << "\n";
+        // reg[val] = c1.read(); // can remove later
     }
 
     bool regControl(int check)
@@ -140,11 +138,15 @@ public:
         case 4:
         {
             store d1(i1->getName(), i1->getSecond(), i1->getThird());
-            int a = m1.read(d1.getThird());
-            int *b = &reg[d1.getSecond()];
-            *b = a;
-            b = NULL;
-            std::cout << reg[d1.getSecond()] << std::endl;
+            /*             int a = m1.read(d1.getThird());
+                        int *b = &reg[d1.getSecond()];
+                        *b = a;
+                        b = NULL; */
+
+            int a = reg[d1.getSecond()];
+            m1.write(d1.getThird(), a);
+
+            //  std::cout << reg[d1.getSecond()] << std::endl;
             instPointer += 1;
             break;
         }
@@ -152,12 +154,11 @@ public:
         case 5:
         {
             InB d1(i1->getName(), i1->getSecond(), i1->getThird());
-
             for (std::pair<const int, console *> x : IOman)
             {
                 int key = x.first;
                 console *c = x.second;
-                if (key = d1.getThird())
+                if (key == d1.getThird())
                 {
                     reg[d1.getSecond()] = x.second->read();
                 }
@@ -210,10 +211,11 @@ public:
                 con.write(m1.read(i));
                 if (m1.read(i) == 0)
                 {
-                    return;
                     instPointer += 1;
+                    return;
                 }
             }
+            break;
         }
 
         case 9:
@@ -228,6 +230,8 @@ public:
 
             reg[d1.getFourth()] = valA + valB;
             instPointer += 1;
+
+            break;
         }
 
         case 10:
@@ -242,12 +246,16 @@ public:
 
             reg[d1.getFourth()] = valA - valB;
             instPointer += 1;
+
+            break;
         }
 
         case 11:
         {
             J d1(i1->getName(), i1->getSecond());
             instPointer += d1.getSecond();
+
+            break;
         }
 
         case 12:
@@ -257,6 +265,7 @@ public:
             {
                 instPointer += d1.getThird();
             }
+            break;
         }
         case 13:
         {
@@ -264,18 +273,22 @@ public:
             if (reg[d1.getSecond()] != 0)
             {
                 instPointer += d1.getThird();
+                std::cout << instPointer;
             }
+            break;
         }
 
         case 14:
         {
             JReg d1(i1->getName(), i1->getSecond());
             instPointer += reg[d1.getSecond()];
+            break;
         }
         case 15:
         {
             Halt d1(i1->getName());
             runinstructions = false;
+            break;
             // end
         }
         }
@@ -283,9 +296,9 @@ public:
 
     void run()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 10000000; i++)
         {
-            evalInst(cpuInst.at(i));
+            evalInst(cpuInst.at(instPointer));
         }
     }
 };

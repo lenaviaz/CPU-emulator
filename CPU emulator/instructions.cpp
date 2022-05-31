@@ -487,7 +487,7 @@ public:
     }
 };
 
-class Halt : inst
+class Halt : public inst
 {
 private:
     std::string name;
