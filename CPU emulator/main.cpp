@@ -10,7 +10,7 @@
 int main()
 {
     ram r1(50); // allocating one chunk of ram of size 15
-    ram r2(20); // allocating one chunk of ram size 20
+    ram r2(30); // allocating one chunk of ram size 20
     console c1;
     console c2;
     mmu m1;
@@ -25,23 +25,25 @@ int main()
 
     // comp.printIOmap();
 
+    // start of CPI instructions for fib
     ldata f1("ldata", 5, "Please enter a number between 0 and 9");
-    OutStr f2("OutStr", 5, 5);
+    OutStr f2("OutStr", 5, 0);
     InB f3("InB", 4, 0);
     loadImm sp("LoadImm", 7, 1);
     loadImm f4("LoadImm", 1, 0);
     loadImm f5("LoadImm", 2, 1);
-
     Add f6("Add", 1, 2, 3);
     store f7("store", 2, 100);
     load f8("load", 1, 100);
-
     store f9("store", 3, 101);
     load f10("load", 2, 101);
     Sub f11("Sub", 4, 7, 4);
+    JZ check("JZ", 4, 2);
     JNZ f12("JNZ", 4, -6);
-
-    // Halt f12("Halt");
+    ldata f13("ldata", 105, "fibbonacci is: ");
+    OutStr f14("OutStr", 105, 0);
+    OutB f15("OutB", 1, 0);
+    Halt f16("Halt");
     // all initializing stuff
 
     comp.addInst(f1);
@@ -56,8 +58,12 @@ int main()
     comp.addInst(f9);
     comp.addInst(f10);
     comp.addInst(f11);
+    // comp.addInst(check);
     comp.addInst(f12);
-
+    comp.addInst(f13);
+    comp.addInst(f14);
+    comp.addInst(f15);
+    comp.addInst(f16);
     comp.run();
 
     comp.printRegs();

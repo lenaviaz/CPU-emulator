@@ -177,11 +177,13 @@ public:
                 console *c = x.second;
                 if (key = d1.getSecond())
                 {
-                    x.second->write(b);
+                    // x.second->write(b);
+                    x.second->outNum(b);
                 }
                 // std::cout << b << "\n";
             }
             instPointer += 1;
+            break;
         }
 
         case 7:
@@ -265,6 +267,7 @@ public:
             {
                 instPointer += d1.getThird();
             }
+
             break;
         }
         case 13:
@@ -273,8 +276,14 @@ public:
             if (reg[d1.getSecond()] != 0)
             {
                 instPointer += d1.getThird();
-                std::cout << instPointer;
+                std::cout << "sasas"
+                          << instPointer << "\n\n";
             }
+            else
+            {
+                instPointer += 1;
+            }
+
             break;
         }
 

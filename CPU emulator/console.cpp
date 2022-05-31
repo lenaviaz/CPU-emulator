@@ -26,5 +26,10 @@ public:
                 << ch;
         }
     }
+
+    void outNum(int b)
+    {
+        std::cout << b << endl;
+    }
 };
 #endif
